@@ -2,8 +2,17 @@
 import React, { useState } from 'react'
 
 function page() {
+    const submitHandler = (e)=>{
+      e.preventDefault();
+      console.log(title);
+      console.log(description);
+      setdescription("")
+      settitle("")
+    }
  const [title , settitle] =useState("");
  const [description , setdescription] =useState("");
+ const [mainTask, setMainTask] = useState([])
+    let randerTask = <h2>No Task Available</h2>
 
   return (
   <>
@@ -11,14 +20,13 @@ function page() {
   <h1 
   className="bg-slate-900 text-white p-4 text-5xl text-center font-bold shadow-black"
   > Todo-List</h1>
-  <form>
+  <form onSubmit={submitHandler}>
     
     <input
     type='text' className="text-2xl border-zinc-900 border-4 m-7 px-5 py-2"
     placeholder='Enter Your Task' 
     value={title}
     onChange={(e)=>{
-      console.log(e.target.value)
       settitle(e.target.value)
     }}
     />
@@ -28,7 +36,6 @@ function page() {
     placeholder='Enter The Description' 
     value={description}
     onChange={(e)=>{
-      console.log(e.target.value)
       setdescription(e.target.value)
     }}
     />
@@ -37,6 +44,14 @@ function page() {
    </button>
    
   </form>
+  <hr/>
+
+  <div>
+    <ul>
+      {randerTask}
+    </ul>
+
+  </div>
   </>
   )
 }
