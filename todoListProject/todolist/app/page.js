@@ -6,8 +6,9 @@ function page() {
       e.preventDefault();
       console.log(title);
       console.log(description);
-      setdescription("")
-      settitle("")
+      setMainTask(...mainTask , {title , description});
+      setdescription("");
+      settitle("");
     }
  const [title , settitle] =useState("");
  const [description , setdescription] =useState("");
