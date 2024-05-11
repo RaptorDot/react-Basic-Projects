@@ -4,16 +4,40 @@ import React, { useState } from 'react'
 function page() {
     const submitHandler = (e)=>{
       e.preventDefault();
-      console.log(title);
-      console.log(description);
-      setMainTask(...mainTask , {title , description});
+      setMainTask([...mainTask , {title , description}]);
       setdescription("");
       settitle("");
     }
+
  const [title , settitle] =useState("");
  const [description , setdescription] =useState("");
- const [mainTask, setMainTask] = useState([])
-    let randerTask = <h2>No Task Available</h2>
+ let [mainTask, setMainTask] = useState([])
+    let randerTask = <h2 className='text-3xl'>No Task Available</h2>
+
+      const deleteHandler = (i)=>{
+        let copyTask = [...mainTask]
+        copyTask.splice(i ,1);
+        setMainTask(copyTask);
+      }
+
+      if(mainTask.length >0){
+        randerTask =  mainTask.map((t , i)=> {
+       return(
+       <li key={i} className="flex items-center justify-between">
+       <div className='flex justify-between rounded-sm m-3 p-1 w-2/3'>
+          <h5 className="font-semibold text-3xl">{t.title}</h5>
+          <h6 className="text-2xl">{t.description}</h6>
+        </div>
+       <button
+       onClick={()=>{deleteHandler(i)}}
+       className="bg-slate-800 rounded-md text-white p-2">
+        Delete
+        </button>
+       </li>
+        )
+        });
+      }
+
 
   return (
   <>
@@ -47,8 +71,8 @@ function page() {
   </form>
   <hr/>
 
-  <div>
-    <ul>
+  <div className="bg-slate-200">
+    <ul className="m-5 p-2">
       {randerTask}
     </ul>
 
