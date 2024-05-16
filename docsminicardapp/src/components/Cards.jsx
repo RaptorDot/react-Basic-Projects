@@ -1,12 +1,12 @@
 import React from 'react'
 import { FaRegFileAlt } from "react-icons/fa";
 import { HiOutlineDownload } from "react-icons/hi";
-function Cards() {
+function Cards(data) {
   return (
     
        <div className=' relative w-60 h-72 rounded-[35px] p-5 bg-zinc-700 text-white overflow-hidden'> 
        <FaRegFileAlt />
-        <p className='text-sm leading-tight mt-5 font-semibold'>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+        <p className='text-sm leading-tight mt-5 font-semibold'>{data.desc}</p>
         <div className='footer absolute bottom-0 w-full left-0'>
           <div className='flex items-center justify-between mb-3 py-4 px-7'>
             <h5>.4mb</h5>
